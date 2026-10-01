@@ -1,0 +1,26 @@
+---
+title: "Experiment Reliability Analyzer"
+author: "Kayson Mirain"
+output: html_document
+---
+
+## Research question
+
+Which product experiments provide reliable evidence of conversion lift after accounting for sampling uncertainty, assignment balance, and multiple comparisons?
+
+## Experimental design
+
+The generator creates three seeded randomized experiments with user, device, acquisition-channel, conversion, and revenue outcomes. Each analysis verifies the control/treatment allocation, estimates absolute and relative lift, and reports adjusted business outcomes.
+
+## Evaluation
+
+The analysis reports two-proportion tests, non-parametric bootstrap confidence intervals, Benjamini-Hochberg adjusted p-values, sample-ratio mismatch checks, and future sample-size estimates. A logistic model tests whether experiment effects persist after adjustment for device, returning-user status, and acquisition channel.
+
+```{r results, echo=FALSE}
+inference <- read.csv("../results/experiment_inference.csv")
+knitr::kable(inference, digits = 4)
+```
+
+## Reproduction
+
+Run `make all` from the repository root. Assignment generation is seeded, every statistical decision is scripted, and inference tables and the adjusted model summary are saved under `results/`.

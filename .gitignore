@@ -1,0 +1,7 @@
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+data/experiment_events.csv
+results/*
+!results/lift_forest_plot.png
